@@ -18,8 +18,8 @@ export const App = () => {
         base: 2,
         sm: 3,
         md: 4,
-        lg: 5,
-        xl: 6,
+        lg: 6,
+        xl: 8,
       }}
     >
       {buttons}
