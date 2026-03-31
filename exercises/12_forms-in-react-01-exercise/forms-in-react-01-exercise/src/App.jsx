@@ -1,24 +1,38 @@
-import './App.css';
+import "./App.css";
 import { useState } from "react";
 
 export function App() {
-    const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState([]);
+  const [inputValue, setInputValue] = useState("");
 
-    const addNote = (note) => {
-        setNotes([...notes, note]);
-    };
+  const addNote = (note) => {
+    setNotes([...notes, note]);
+  };
 
-    return (
-        <>
-            <h1>To-do App</h1>
-            <div className="notes-container">
-                {notes.map((note, index) => (
-                    <p key={index}>{note}</p>
-                ))}
-            </div>
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    addNote(inputValue);
+    setInputValue("");
+  };
 
-            <form>
-            </form>
-        </>
-    )
+  return (
+    <>
+      <h1>To-do App</h1>
+
+      <div className="notes-container">
+        {notes.map((note, index) => (
+          <p key={index}>{note}</p>
+        ))}
+      </div>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+        />
+        <input type="submit" value="Add note" />
+      </form>
+    </>
+  );
 }
